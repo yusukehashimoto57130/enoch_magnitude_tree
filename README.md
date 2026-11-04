@@ -24,3 +24,10 @@ The library answers a narrow question: can you group arbitrary nonnegative integ
 ## The awkward edge
 
 `n = 0` and `n = 1` both map to key `0` (for `n = 1`, `floor(log2(1)) = 0` and the suffix is empty, so its popcount is `0`). They share a bucket. This is intentional and is tested. Also, `bool` values are rejected by `__contains__` even though `bool` is a subclass of `int`, because mixing `True` with the integer `1` would make membership tests ambiguous.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
