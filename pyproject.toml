@@ -1,6 +1,6 @@
 [project]
 name = "enoch-magnitude-tree"
-version = "0.1.0"
+version = "0.1.1"
 description = "Associative dictionary tree that buckets nonnegative integer keys by magnitude derived from log2 and popcount"
 requires-python = ">=3.10"
 dependencies = []
